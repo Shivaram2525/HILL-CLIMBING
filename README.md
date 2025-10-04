@@ -1,6 +1,10 @@
 <h1>ExpNo 5 : Implement Simple Hill Climbing Algorithm</h1> 
-<h3>Name:             </h3>
-<h3>Register Number:             </h3>
+
+```
+Name         : Shivaram M.
+Register No. : 212223040195
+```
+
 <H3>Aim:</H3>
 <p>Implement Simple Hill Climbing Algorithm and Generate a String by Mutating a Single Character at each iteration </p>
 <h2> Theory: </h2>
@@ -25,6 +29,34 @@ Feedback is provided in terms of heuristic function
 </ul>
 </li>
 </ol>
+
+## Code:
+```
+import random, string
+
+target = "Artificial Intelligence"
+chars = string.ascii_letters + " !?."
+rand_str = lambda n: ''.join(random.choice(chars) for _ in range(n))
+score = lambda s: sum(abs(ord(a) - ord(b)) for a, b in zip(s, target))
+mutate = lambda s: s[:i] + random.choice(chars) + s[i+1:]
+
+best = rand_str(len(target))
+best_score = score(best)
+
+for step in range(100000):
+    i = random.randrange(len(target))
+    new = mutate(best)
+    new_score = score(new)
+    if new_score < best_score:
+        best, best_score = new, new_score
+    if step % 1000 == 0:
+        print(f"{step}: {best} ({best_score})")
+    if best_score == 0:
+        break
+
+print("\nFinal:", best)
+
+```
 
 </p>
 <hr>
@@ -59,3 +91,8 @@ Score: 1  Solution :  Artificial Intelligencf<br>
 Score: 1  Solution :  Artificial Intelligencf<br>
 Score: 1  Solution :  Artificial Intelligencf<br>
 Score: 0  Solution :  Artificial Intelligence<br>
+<img width="997" height="226" alt="output" src="https://github.com/user-attachments/assets/fec5191c-90f7-42fe-9a7b-c13fcc554b95" />
+<img width="1680" height="1050" alt="code" src="https://github.com/user-attachments/assets/8748f49e-2554-48ee-9966-40fdadf76b34" />
+
+## Result:
+An simplle Hill Climbing algorithm has been implemented successfullly.
